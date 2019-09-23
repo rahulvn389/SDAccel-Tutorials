@@ -1,6 +1,6 @@
 XOCC := $(XILINX_SDX)/bin/xocc
 EMCONFIGUTIL := $(XILINX_SDX)/bin/emconfigutil
-MODE := hw_emu
+MODE := sw_emu
 PLATFORM := xilinx_u200_xdma_201830_1
 
 # sources
@@ -15,7 +15,7 @@ XCLBIN := vadd.$(MODE).xclbin
 EMCONFIG_FILE := emconfig.json
 
 # Linker options to map kernel ports to DDR banks
-# XOCC_LINK_OPTS := --sp vadd_1.in1:DDR[0] --sp vadd_1.in2:DDR[1] --sp vadd_1.out:DDR[2]
+ XOCC_LINK_OPTS := --sp vadd_1.in1:DDR[0] --sp vadd_1.in2:DDR[1] --sp vadd_1.out:DDR[2]
 
 XOCC_COMMON_OPTS := -s -t $(MODE) --platform $(PLATFORM)
 CFLAGS := -g -std=c++11 -I$(XILINX_XRT)/include
